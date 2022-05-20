@@ -23,7 +23,7 @@ let primaryContact : Contact = {
 }
 
 /**If we don't require one of the Contact fields, then during definition of the interface
- * we can a "?" to make it an optional field
+ * we can place a "?" to make it an optional field
  * Without the question mark, if we remove one of the fields from primaryContact then we get an error
  * So, not every contact has to have a birthdate, but if an object does have one, then it must be a Date type
 */
