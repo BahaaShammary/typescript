@@ -4,9 +4,9 @@
 
 // We can use aliases to combine multiple 
 
-type ContactName = string;
+type ContactName1 = string;
 
-enum ContactStatus {
+enum ContactStatus1 {
     Active = "active",
     Inactive = "inactive",
     New = "new"
@@ -18,16 +18,16 @@ type ContactStatusType = "active" | "inactive" | "new";
 
 // instead of piping several types inside an interface for a field
 // we can create a custom type (alias) to represent the type of a field
-type ContactBirthDate = Date | number | string;
+type ContactBirthDate1 = Date | number | string;
 
-interface Contact {
+interface UnadressableContact {
     id: number;
     name: ContactName;
-    birthDate?: ContactBirthDate; // we can support other types for this field
+    birthDate?: ContactBirthDate1; // we can support other types for this field
     status?: ContactStatusType;
 }
 
-interface Address {
+interface Address2 {
     line1: string;
     line2: string;
     town: string;
@@ -37,9 +37,9 @@ interface Address {
 
 // We can create a new type that can combine two types (having all of both types' fields)
 // this is done by using the "&" operator
-type AddressableContact = Contact & Address;
+type AddressableContact = Contact & Address2;
 
-function getBirthDate(contact: Contact) {
+function getBirthDate(contact: UnadressableContact) {
     if (typeof contact.birthDate === "number") {
         return new Date(contact.birthDate)
     }
@@ -59,7 +59,7 @@ function getBirthDate(contact: Contact) {
 //     status: ContactStatus.Active,
 // }
 // Or we can use our alias type:
-let contactUsingAlias: Contact = {
+let contactUsingAlias: UnadressableContact = {
     id: 1,
     name: "Bahaulddin",
     birthDate: "05/02/1994",

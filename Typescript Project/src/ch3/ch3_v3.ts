@@ -26,6 +26,8 @@ console.log(typeof y1);  // = boolean
 const sizeType = {min : 1, max: 100};
 // This way we know anytime someone calls this function
 // The parameter they pass must match the same structure as what was defined in "sizeType"
+// This is helpful when you don't have a type in advance and only able to know it during run time
+// then define the variable as the same type of whatever that const is
 const save = (source: typeof sizeType) => (
     source.max
 )
