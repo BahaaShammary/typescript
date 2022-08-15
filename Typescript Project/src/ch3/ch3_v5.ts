@@ -10,3 +10,30 @@ anyObj = 5 // This means instead of an object, we give it a single value
 let recordObj : Record<string, string | number | Function> = {name: "Bahawi"}
 recordObj.id = 1234
 recordObj.log = () => console.log("sup")
+
+interface Query {
+    sort?: 'asc' | 'desc';
+    matches(val) : boolean;
+}
+
+function searchContacts(contacts: Contact[], query: Record<keyof Contact, Query>) {
+    return contacts.filter(contact => {
+        for (const property of Object.keys(contact) as (keyof Contact)[]) {
+            //get the query object for this property
+            const propertyQuery = query[property];
+            //check to see if it matches
+            if (propertyQuery && propertyQuery.matches(contact[property])) {
+                return true;
+            }
+        }
+        return false;
+    })
+}
+
+const filteredContacts = searchContacts(
+    [/* contacts */],
+    {
+        id: {matches: (id : Record<number, number>) => id === 123},
+        name: {matches: (name) => name === 'Bahaa Shammary'}
+    }
+);
