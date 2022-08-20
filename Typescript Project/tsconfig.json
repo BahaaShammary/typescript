@@ -5,6 +5,9 @@
         "outDir": "build",
         "target": "esnext",
         "noEmit": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        
     },
     "include": ["src/**/*"]
 }
